@@ -326,11 +326,11 @@ export type JestResult = {
 
 exports.test = (opts /*: JestOptions */ = {}) => {
   return new Promise((resolve, reject) => {
-    jestCli.runCLI(opts, [opts.rootDir], result => {
+    jestCli.runCLI(opts, [opts.rootDir], (result /*: JestResult */) => {
       if (result.numFailedTests || result.numFailedTestSuites) {
-        let err = new Error('Tests failed');
-        Object.assign((err /*: any */), result);
-        reject(err);
+        let err /*: any */ = new Error('Tests failed');
+        Object.assign(err, result);
+        reject((err /*: Error & JestResult */));
       } else {
         resolve(result);
       }
