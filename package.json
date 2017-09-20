@@ -10,7 +10,7 @@
     "index.js"
   ],
   "scripts": {
-    "test": "jest --testPathIgnorePatterns /node_modules/,/fixtures/"
+    "test": "jest --testPathIgnorePatterns '(/node_modules/|/fixtures/)'"
   },
   "devDependencies": {
     "flow-bin": "^0.49.1",

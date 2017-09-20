@@ -325,6 +325,9 @@ export type JestResult = {
 */
 
 exports.test = (opts /*: JestOptions */ = {}) => {
+  opts = Object.assign({
+    rootDir: process.cwd()
+  }, opts);
   return new Promise((resolve, reject) => {
     jestCli.runCLI(opts, [opts.rootDir], (result /*: JestResult */) => {
       if (result.numFailedTests || result.numFailedTestSuites) {

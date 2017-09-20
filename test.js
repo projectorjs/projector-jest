@@ -28,3 +28,11 @@ test('failure', () => {
     expect(err.numPassedTestSuites).toBe(0);
   });
 });
+
+test('default rootDir', () => {
+  jest.spyOn(process, 'cwd').mockImplementation(() => success);
+  return _jest.test().then(res => {
+    expect(process.cwd.mock.calls.length).toBeGreaterThan(0);
+    process.cwd.mockRestore();
+  });
+});
