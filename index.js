@@ -325,7 +325,7 @@ export type JestResult = {
 */
 
 exports.test = (opts /*: JestOptions */ = {}) => {
-  opts = Object.assign({
+  opts = Object.assign({}, {
     rootDir: process.cwd()
   }, opts);
   return new Promise((resolve, reject) => {
